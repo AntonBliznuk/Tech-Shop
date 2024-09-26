@@ -1,13 +1,49 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.views.generic import View
 from . import forms
+from . import models
 
 
-class HomePage(View):
-    def get(self, request):
-        return HttpResponse("Home Page")
+def home_page(request):
+
+    if request.user.is_authenticated:
+
+        if request.method == 'GET':
+            last_viewed = models.ViewProduct.objects.filter(user=request.user).order_by('-viewed_at')[:10]
+            recomendations = None
+
+            if last_viewed:
+                category_viewed_list = []
+
+                for cat in last_viewed:
+                    category_viewed_list.append(str(cat.product.category.name))
+
+                print(category_viewed_list) 
+
+                data = {
+                    'last_viewed': last_viewed,
+                    'recomendations': recomendations
+                }
+                return render(request, 'main/home_page.html', data)
+
+            else:
+                data = {
+                    'last_viewed': None,
+                    'recomendations': None
+                }
+                return render(request, 'main/home_page.html', data)
+            
+        else:
+            return redirect('home_page')
+        
+    else:
+
+        data = {
+            'last_viewed': None,
+            'recomendations': None
+        }
+        return render(request, 'main/home_page.html', data)
     
 
 def register_page(request):
@@ -31,7 +67,6 @@ def register_page(request):
                 return redirect('register_page')
     else:
         return redirect('home_page')
-
 
 
 def login_page(request):
