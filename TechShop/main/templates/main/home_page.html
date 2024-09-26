@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Store</title>
+    <link rel="stylesheet" href="{% static 'main/CSS/home_page.css' %}">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar">
+        <a href="/">Tech Store</a>
+        <div class="user-actions">
+            {% if user.is_authenticated %}
+                <a href="/logout">Выйти</a>
+                <a href="/account">Личный кабинет</a>
+            {% else %}
+                <a href="/login">Войти</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Строка поиска -->
+    <div class="search-bar">
+        <input type="text" placeholder="Искать технику...">
+    </div>
+
+    <div class="container">
+        <!-- Недавно просмотренные товары -->
+        <div class="list-section">
+            <h2>Недавно просмотренные</h2>
+            <div class="product-list">
+                {% for product in recently_viewed %}
+                    <div class="product-card">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.price }} руб.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Рекомендуемые товары -->
+        <div class="list-section">
+            <h2>Рекомендации</h2>
+            <div class="product-list">
+                {% for product in recommendations %}
+                    <div class="product-card">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.price }} руб.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
