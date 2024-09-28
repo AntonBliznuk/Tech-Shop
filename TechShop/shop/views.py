@@ -9,7 +9,7 @@ def shop_page(request, page_number):
         products = models.Product.objects.all()
         PRODUCTS_ON_PAGE = 10
 
-        
+        # in the feature hear will be filters
 
         products = page_manager(products, page_number, PRODUCTS_ON_PAGE)
 
@@ -25,4 +25,18 @@ def shop_page(request, page_number):
     
 
 def product_page(request, product_id):
-    return render(request, 'shop/product_page.html', {'product': models.Product.objects.get(id=product_id)})
+    if request.method == 'GET':
+
+        if request.user.is_authenticated:
+            result = models.ViewProduct.objects.filter(user=request.user, product=models.Product.objects.get(id=product_id))
+            if result:
+                result.delete()
+
+            new_view = models.ViewProduct(user=request.user, product=models.Product.objects.get(id=product_id))
+            new_view.save()
+
+        return render(request, 'shop/product_page.html', {'product': models.Product.objects.get(id=product_id)})
+
+    else:
+        return redirect('product_page')
+

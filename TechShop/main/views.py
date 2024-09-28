@@ -10,7 +10,17 @@ def home_page(request):
     if request.user.is_authenticated:
 
         if request.method == 'GET':
-            last_viewed = models.ViewProduct.objects.filter(user=request.user).order_by('-viewed_at')[:10]
+            # last_list = []
+            # last_product = []
+            last_viewed = models.ViewProduct.objects.filter(user=request.user).order_by('-viewed_at')
+            # for i in last_viewed:
+            #     if i.product not in last_product:
+            #         last_product.append(i.product)
+            #         last_list.append(i)
+            #         if len(last_list) >= 10:
+            #             break
+            # last_viewed = last_list
+
             recomendations = None
 
             if last_viewed:
@@ -20,6 +30,9 @@ def home_page(request):
                     category_viewed_list.append(str(cat.product.category.name))
 
                 print(category_viewed_list) 
+
+                for view in last_viewed:
+                    view.image = models.ImageProduct.objects.filter(product=view.product)[1].image
 
                 data = {
                     'last_viewed': last_viewed,
@@ -56,7 +69,7 @@ def register_page(request):
             if form.is_valid():
                 username = form.cleaned_data['username']
                 email = form.cleaned_data['email']
-                password = form.cleaned_data['password']
+                password = form.cleaned_data['password1']
 
                 new_user = User(username=username, email=email)
                 new_user.set_password(password)
