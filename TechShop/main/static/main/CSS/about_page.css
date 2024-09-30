@@ -1,0 +1,103 @@
+/* Контейнер для всей команды */
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;  /* Увеличим промежутки между карточками */
+    justify-content: center;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+
+/* Стиль для увеличенной карточки сотрудника */
+.team-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;  /* Немного закруглим углы */
+    width: 350px;  /* Увеличим ширину карточки */
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Эффект при наведении */
+.team-card:hover {
+    transform: scale(1.05);
+}
+
+/* Стиль для увеличенного изображения сотрудника */
+.worker-image {
+    width: 100%;
+    height: 350px;  /* Увеличим высоту изображения */
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Стиль для деталей сотрудника */
+.worker-details {
+    padding: 20px;
+}
+
+.worker-details h2 {
+    font-size: 1.8em;  /* Увеличим размер шрифта для имени */
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.worker-details .position {
+    font-size: 1.3em;  /* Немного увеличим размер шрифта для должности */
+    color: #777;
+}
+
+/* Стили для заголовка страницы "Наша команда" */
+.about-us-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px;
+    background: linear-gradient(135deg, #000000, #bd8b00);  /* Градиентный фон */
+    color: white;
+    border-radius: 0px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);  /* Более глубокая тень */
+}
+
+/* Стили для основного заголовка */
+.about-us-header h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;  /* Небольшое межбуквенное расстояние */
+    text-transform: uppercase;  /* Преобразование текста в верхний регистр */
+    color: gold; /* Золотой цвет текста */
+    text-shadow: 0 0 10px rgba(255, 223, 0, 0.8), /* Золотое свечение */
+                 0 0 20px rgba(255, 223, 0, 0.6), /* Дополнительное свечение */
+                 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Тень для текста */
+    transition: text-shadow 0.3s ease;
+}
+
+/* Усиление свечения при наведении */
+.about-us-header h1:hover {
+    text-shadow: 0 0 20px rgba(255, 223, 0, 1), /* Более сильное золотое свечение */
+                 0 0 30px rgba(255, 223, 0, 0.9), /* Усиленное дополнительное свечение */
+                 2px 2px 5px rgba(0, 0, 0, 0.4);  /* Усиленная тень */
+}
+
+/* Стили для подзаголовка */
+.about-us-header p {
+    font-size: 1.4em;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);  /* Легкая тень для текста */
+}
+
+/* Для мобильных устройств уменьшим размеры */
+@media (max-width: 768px) {
+    .about-us-header h1 {
+        font-size: 2.5em;
+    }
+    .about-us-header p {
+        font-size: 1.2em;
+    }
+}

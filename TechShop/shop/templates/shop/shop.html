@@ -59,7 +59,7 @@
     <!-- Main Content -->
     <div class="car-container">
         {% for p in products %}
-        <a href="car-id-{{ car.id }}/" class="car-link">
+        <a href="/shop/product/{{ p.id }}/" class="car-link">
             <div class="car-card">
                 <img src="{{ p.image.url }}" alt="{{ p.name }}" class="car-image">
                 <div class="car-details">

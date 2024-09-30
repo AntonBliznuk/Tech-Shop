@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from shop.SupporPrograms.recomendation import no_data_rec
 from . import forms
 from . import models
 
@@ -34,16 +35,29 @@ def home_page(request):
                 for view in last_viewed:
                     view.image = models.ImageProduct.objects.filter(product=view.product)[0].image
 
+
+                prod = models.Product.objects.all()
+                rec = no_data_rec(prod, 4)
+
+                for p in rec:
+                    p.image = models.ImageProduct.objects.filter(product=p)[0].image
+
                 data = {
                     'last_viewed': last_viewed,
-                    'recomendations': recomendations
+                    'recommendations': rec
                 }
                 return render(request, 'main/home_page.html', data)
 
             else:
+                prod = models.Product.objects.all()
+                rec = no_data_rec(prod, 4)
+
+                for p in rec:
+                    p.image = models.ImageProduct.objects.filter(product=p)[0].image
+
                 data = {
                     'last_viewed': None,
-                    'recomendations': None
+                    'recommendations': rec
                 }
                 return render(request, 'main/home_page.html', data)
             
@@ -51,10 +65,15 @@ def home_page(request):
             return redirect('home_page')
         
     else:
+        prod = models.Product.objects.all()
+        rec = no_data_rec(prod, 4)
+
+        for p in rec:
+            p.image = models.ImageProduct.objects.filter(product=p)[0].image
 
         data = {
             'last_viewed': None,
-            'recomendations': None
+            'recommendations': rec
         }
         return render(request, 'main/home_page.html', data)
     
@@ -110,3 +129,13 @@ def login_page(request):
 def logout_page(request):
     logout(request)
     return redirect('home_page')
+
+
+def about_page(request):
+    data = {
+        'workers': models.Worker.objects.all()
+    }
+    return render(request, 'main/about_page.html', data)
+
+def contact_page(request):
+    return render(request, 'main/contact_page.html')

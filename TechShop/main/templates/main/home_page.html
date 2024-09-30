@@ -1,27 +1,15 @@
+{% extends 'main/layout.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Store</title>
-    <link rel="stylesheet" href="{% static 'main/CSS/home_page.css' %}">
-</head>
-<body>
-    <!-- Навигационная панель -->
-    <nav class="navbar">
-        <a href="/">Tech Store</a>
-        <div class="user-actions">
-            {% if user.is_authenticated %}
-                <a href="/logout/">Выйти</a>
-                <a href="/account/">Личный кабинет</a>
-            {% else %}
-                <a href="/login/">Войти</a>
-            {% endif %}
-        </div>
-    </nav>
+{% block title %}Shop{% endblock %}
 
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'main/CSS/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'main/CSS/product_styles.css' %}"> <!-- Подключение файла стилей для карточек товаров -->
+{% endblock %}
+
+{% block content %}
+<body>
     <!-- Строка поиска -->
     <div class="search-bar">
         <input type="text" placeholder="Искать технику...">
@@ -33,12 +21,11 @@
             <h2>Недавно просмотренные</h2>
             <div class="product-list">
                 {% for view in last_viewed %}
-                    <div class="product-card">
+                    <a href="/shop/product/{{ view.product.id }}/" class="product-card"> <!-- Ссылка на детальную страницу товара -->
                         <img src="{{ view.image }}" alt="{{ view.product.name }}">
-                        <h3>{{ view.product.brand }}</h3>
-                        <h3>{{ view.product.name }}</h3>
-                        <p>{{ view.product.price }} $</p>
-                    </div>
+                        <h3>{{ view.product.brand }} {{ view.product.name }}</h3>
+                        <p class="price">{{ view.product.price }} $</p>
+                    </a>
                 {% endfor %}
             </div>
         </div>
@@ -48,14 +35,14 @@
             <h2>Рекомендации</h2>
             <div class="product-list">
                 {% for product in recommendations %}
-                    <div class="product-card">
-                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
-                        <h3>{{ product.name }}</h3>
-                        <p>{{ product.price }} $</p>
-                    </div>
+                    <a href="" class="product-card"> <!-- Ссылка на детальную страницу товара -->
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <h3>{{ product.brand }} {{ product.name }}</h3>
+                        <p class="price">{{ product.price }} $</p>
+                    </a>
                 {% endfor %}
             </div>
         </div>
     </div>
 </body>
-</html>
+{% endblock %}

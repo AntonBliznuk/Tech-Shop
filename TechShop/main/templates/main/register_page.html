@@ -1,5 +1,33 @@
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'main/CSS/register_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="overlay">
+        <main>
+            <div class="login-container">
+                <h2>Registaration</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.name != 'password' %}
+                            {{ field.errors }}
+                        {% endif %}
+                    {% endfor %}
+                    <button type="submit" class="btn">Registaration</button>
+                </form>
+                <button class="btn" onclick="window.location.href='/login/'">Login</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+{% endblock %}
