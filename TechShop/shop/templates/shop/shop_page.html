@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин техники</title>
+    <link rel="stylesheet" href="{% static 'shop/CSS/shop_page.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Верхняя панель пользователя -->
+        <header>
+            <div class="user-bar">
+                {% if user.is_authenticated %}
+                    <span>Здравствуйте, {{ user.username }}</span>
+                    <a href="{% url 'logout_page' %}">Выйти</a>
+                {% else %}
+                    <a href="{% url 'login_page' %}">Войти</a>
+                {% endif %}
+            </div>
+        </header>
+
+        <!-- Основной контейнер -->
+        <div class="container">
+            <!-- Левая панель фильтров -->
+            <aside class="filter-panel">
+                <h2>Фильтры</h2>
+                <form method="get" action="">
+                    <label for="brand">Бренд:</label>
+                    <select name="brand" id="brand">
+                        <option value="">Все бренды</option>
+                        {% for brand in brands %}
+                            <option value="{{ brand.id }}" {% if brand.id == selected_brand %}selected{% endif %}>{{ brand.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="price-range">Ценовой диапазон:</label>
+                    <input type="number" name="min_price" placeholder="Мин цена" value="{{ request.GET.min_price }}">
+                    <input type="number" name="max_price" placeholder="Макс цена" value="{{ request.GET.max_price }}">
+
+                    <label for="category">Категория:</label>
+                    <select name="category" id="category">
+                        <option value="">Все категории</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {% if category.id == selected_category %}selected{% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit">Применить фильтры</button>
+                </form>
+            </aside>
+
+            <!-- Список товаров -->
+            <main class="product-list">
+                {% for product in products %}
+                    <div class="product-card">
+                        <a href="">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            <h3>{{ product.brand }} {{ product.name }}</h3>
+                            <p>Цена: {{ product.price }} $</p>
+                        </a>
+                    </div>
+                {% empty %}
+                    <p>Товары не найдены.</p>
+                {% endfor %}
+            </main>
+        </div>
+
+        <!-- Пагинация -->
+        <footer>
+            <nav class="pagination">
+                <ul>
+                    <!-- Ссылка на предыдущую страницу, если не на первой -->
+                    {% if current_page > 1 %}
+                        <li><a href="/shop/page/{{ current_page|add:"-1" }}/">&laquo; Назад</a></li>
+                    {% endif %}
+
+                    <!-- Ссылка на следующую страницу, если не на последней -->
+                    {% if current_page < total_pages %}
+                        <li><a href="/shop/page/{{ current_page|add:"1" }}/">Вперед &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

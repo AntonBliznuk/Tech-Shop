@@ -1,0 +1,259 @@
+/* Основные стили для body */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Контейнер магазина */
+.shop-container {
+    display: flex;
+}
+
+/* Панель управления */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-right: 2px solid #ddd;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.filter-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.filter-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Контейнер автомобилей */
+.car-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Карточка автомобиля */
+.car-card {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px;
+    position: relative;
+}
+
+.car-link {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследуем цвет текста от родителя */
+}
+
+.car-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgb(255, 243, 175); /* Золотое свечение вокруг карточки */
+}
+
+/* Псевдоэлемент для эффекта свечения */
+.car-card:hover::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgb(227, 213, 138); /* Эффект свечения */
+    z-index: -1; /* Убираем за карточку */
+}
+
+.car-image {
+    width: 100%;
+    height: 470px;
+    object-fit: cover;
+}
+
+.car-details {
+    padding: 10px;
+}
+
+.car-details h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.car-details p {
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+/* Стили для фильтров в панели управления */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-right: 2px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Стиль для input поля */
+.filter-section input {
+    width: 100%;
+    max-width: 232px; /* Одинаковая ширина */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #fff;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+    height: 30px; /* Фиксированная высота */
+}
+
+/* Стиль для select поля */
+.filter-section select {
+    width: 100%;
+    max-width: 250px; /* Одинаковая ширина */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #fff;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+    appearance: none; /* Убираем стандартное оформление */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    height: 45px; /* Фиксированная высота для select */
+}
+
+.filter-section select:focus,
+.filter-section input:focus {
+    border-color: #999;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для кнопки */
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f9c84a; /* Темно-золотой цвет */
+    color: #000000;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, color 0.s ease;
+}
+
+/* Эффект при наведении */
+.sidebar button:hover {
+    background-color: gold; /* Золотой цвет при наведении */
+    color: #000; /* Меняем цвет текста на черный при наведении */
+    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Увеличенное золотое свечение */
+}
+
+/* Эффект при нажатии */
+.sidebar button:active {
+    background-color: #b8860b; /* Темно-золотой цвет при нажатии */
+    box-shadow: none; /* Убираем свечение при нажатии */
+}
+
+.search-bar {
+    width: 50%; /* Увеличена ширина */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin-left: 450px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #f9c84a; /* Темно-золотой цвет */
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: gold; /* Золотой цвет при наведении */
+    color: #000; /* Меняем цвет текста на черный при наведении */
+    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Увеличенное золотое свечение */
+}
+
+/* Стили для пагинации */
+.pagination {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 20px; /* Отступ от низа экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Смещение для центрирования */
+    text-align: center;
+    margin: 0; /* Убираем отступы сверху и снизу */
+    z-index: 1000; /* Обеспечиваем, чтобы пагинация была выше других элементов */
+}
+
+.pagination-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f9c84a; /* Темно-золотой цвет */
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pagination-button:hover {
+    background-color: gold; /* Золотой цвет при наведении */
+    color: #000;
+    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Золотое свечение при наведении */
+}
+
+.pagination span {
+    font-size: 1.2em;
+    margin: 0 15px;
+}

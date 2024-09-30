@@ -71,3 +71,31 @@ class WhisList(models.Model):
     class Meta:
         verbose_name = 'WhisList'
         verbose_name_plural = 'WhisLists'
+
+
+class Position(models.Model):
+    name = models.CharField(max_length=30, blank=False)
+    salary = models.FloatField()
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Position'
+        verbose_name_plural = 'Positions'
+        ordering = ['-salary']
+
+
+class Worker(models.Model):
+    first_name = models.CharField(max_length=25, blank=False)
+    second_name = models.CharField(max_length=25, blank=False)
+    photo = models.ImageField(upload_to='media/workers/', blank=False)
+    position = models.ForeignKey(Position, on_delete=models.CASCADE, blank=False)
+
+    def __str__(self) -> str:
+        return f"{self.first_name} {self.second_name} ({self.position})"
+    
+    class Meta:
+        verbose_name = 'Worker'
+        verbose_name_plural = 'Workers'
+        ordering = ['-first_name', '-second_name']

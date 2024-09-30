@@ -32,7 +32,7 @@ def home_page(request):
                 print(category_viewed_list) 
 
                 for view in last_viewed:
-                    view.image = models.ImageProduct.objects.filter(product=view.product)[1].image
+                    view.image = models.ImageProduct.objects.filter(product=view.product)[0].image
 
                 data = {
                     'last_viewed': last_viewed,

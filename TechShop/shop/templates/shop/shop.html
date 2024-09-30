@@ -1,0 +1,89 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Shop{% endblock %}
+
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'shop/CSS/shop.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Форма поиска вверху -->
+<div class="search-bar-container">
+    <form method="GET" action="">
+        <input type="text" name="search_query" placeholder="Поиск" class="search-bar">
+        <button type="submit" class="search-button">Поиск</button>
+    </form>
+</div>
+
+<div class="shop-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h3>Фильтры</h3>
+        <form method="GET" action="">
+            <div class="filter-section">
+                <h4>Категории</h4>
+                <select name="cat">
+                    <option value="">Все категории</option>
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h4>Цены</h4>
+                <input type="number" name="price_min" placeholder="Минимальная цена">
+                <input type="number" name="price_max" placeholder="Максимальная цена">
+            </div>
+
+            <div class="filter-section">
+                <h4>Бренды</h4>
+                <select name="brand">
+                    <option value="">Все бренды</option>
+                    {% for name in brand_names %}
+                    <option value="{{ name }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h4>Год выпуска</h4>
+                <input type="number" name="year" placeholder="Год выпуска">
+            </div>
+
+            <button type="submit">Применить фильтр</button>
+        </form>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="car-container">
+        {% for p in products %}
+        <a href="car-id-{{ car.id }}/" class="car-link">
+            <div class="car-card">
+                <img src="{{ p.image.url }}" alt="{{ p.name }}" class="car-image">
+                <div class="car-details">
+                    <h2>{{ p.brand }} {{ p.name }}</h2>
+                    <p>{{ p.price }} $</p>
+                </div>
+            </div>
+        </a>
+        {% empty %}
+        <p></p>
+        {% endfor %}
+
+    <!-- Пагинация -->
+    <div class="pagination">
+        {% if products.has_previous %}
+            <a href="/shop/page/{{ products.previous_page_number }}/" class="pagination-button">Предыдущая</a>
+        {% endif %}
+
+        <span>Страница {{ products.number }} из {{ products.paginator.num_pages }}</span>
+
+        {% if products.has_next %}
+            <a href="/shop/page/{{ products.next_page_number }}/" class="pagination-button">Следующая</a>
+        {% endif %}
+    </div>
+    </div>
+</div>
+{% endblock %}

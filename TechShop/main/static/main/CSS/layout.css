@@ -1,0 +1,121 @@
+/* Основные стили для body */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основные стили для header */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 80px;
+}
+
+/* Стили для логотипа */
+.main-header .logo {
+    flex: 1;
+}
+
+.main-header .logo h1 {
+    color: #fff;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+/* Стили для навигации */
+.main-nav {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 1.4em;
+    color: #fff;
+    background-color: #555;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    background-color: #a78001;
+    transform: scale(1.1);
+}
+
+.main-nav ul li a.active {
+    background-color: #FFD700;
+    box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7);
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+/* Стили для панели авторизации */
+.auth-panel {
+    flex: 1;
+    text-align: right;
+}
+
+.auth-panel a {
+    color: white;
+    background-color: #555;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.auth-panel a:hover {
+    background-color: #a78001;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .main-header .logo h1 {
+        font-size: 2em;
+    }
+
+    .main-nav {
+        width: 100%;
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav ul li a {
+        font-size: 1.2em;
+        padding: 10px 20px;
+    }
+
+    .auth-panel {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
