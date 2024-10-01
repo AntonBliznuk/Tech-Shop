@@ -43,7 +43,7 @@ def home_page(request):
                     p.image = models.ImageProduct.objects.filter(product=p)[0].image
 
                 data = {
-                    'last_viewed': last_viewed,
+                    'last_viewed': last_viewed[:5],
                     'recommendations': rec
                 }
                 return render(request, 'main/home_page.html', data)

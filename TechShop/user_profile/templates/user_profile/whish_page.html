@@ -1,1 +1,29 @@
-<h1>Whish Page</h1>
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Wish List{% endblock %}
+
+{% block add_css %}
+    <link rel="stylesheet" href="{% static 'user_profile/CSS/wishlist_orders.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="center-wrapper">
+        <div class="wishlist-container">
+            <h1>Wishlist</h1>
+            <div class="card-grid">
+                {% for item in whish %}
+                <div class="card">
+                    <img src="{{ item.image.url }}" alt="{{ item.product.name }}" class="card-image">
+                    <div class="card-content">
+                        <h3>{{ item.product.name }}</h3>
+                        <p>{{ item.product.description }}</p>
+                        <p><strong>Price:</strong> ${{ item.product.price }}</p>
+                        <a href="/profile/remove_wish/{{ item.product.id }}/" class="card-button delete-button">Remove</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

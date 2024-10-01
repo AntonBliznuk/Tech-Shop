@@ -1,1 +1,24 @@
-<h1>Profile Page</h1>
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block add_css %}
+    <link rel="stylesheet" href="{% static 'user_profile/CSS/profile_page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="center-wrapper">
+        <div class="profile-container">
+            <h1>User Profile</h1>
+            <div class="user-info">
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+            </div>
+            <div class="profile-actions">
+                <a href="{% url 'orders_page' %}" class="profile-button">Orders</a>
+                <a href="{% url 'whish_page' %}" class="profile-button">Wishlist</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

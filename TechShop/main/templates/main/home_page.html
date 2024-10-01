@@ -5,14 +5,16 @@
 
 {% block add_css %}
 <link rel="stylesheet" href="{% static 'main/CSS/home_page.css' %}">
-<link rel="stylesheet" href="{% static 'main/CSS/product_styles.css' %}"> <!-- Подключение файла стилей для карточек товаров -->
 {% endblock %}
 
 {% block content %}
 <body>
     <!-- Строка поиска -->
-    <div class="search-bar">
-        <input type="text" placeholder="Искать технику...">
+    <div class="search-bar-container">
+        <form method="GET" action="">
+            <input type="text" name="search_query" placeholder="Поиск" class="search-bar">
+            <button type="submit" class="search-button">Поиск</button>
+        </form>
     </div>
 
     <div class="container">
@@ -21,11 +23,14 @@
             <h2>Недавно просмотренные</h2>
             <div class="product-list">
                 {% for view in last_viewed %}
-                    <a href="/shop/product/{{ view.product.id }}/" class="product-card"> <!-- Ссылка на детальную страницу товара -->
-                        <img src="{{ view.image }}" alt="{{ view.product.name }}">
-                        <h3>{{ view.product.brand }} {{ view.product.name }}</h3>
-                        <p class="price">{{ view.product.price }} $</p>
-                    </a>
+                    <div class="product-card">
+                        <a href="/shop/product/{{ view.product.id }}/" class="product-link">
+                            <img src="{{ view.image }}" alt="{{ view.product.name }}">
+                            <h3>{{ view.product.brand }} {{ view.product.name }}</h3>
+                            <p class="price">{{ view.product.price }} $</p>
+                        </a>
+                        <a href="/shop/order/product/{{ view.product.id }}/" class="add-to-cart-btn">Buy</a>
+                    </div>
                 {% endfor %}
             </div>
         </div>
@@ -35,11 +40,14 @@
             <h2>Рекомендации</h2>
             <div class="product-list">
                 {% for product in recommendations %}
-                    <a href="" class="product-card"> <!-- Ссылка на детальную страницу товара -->
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                        <h3>{{ product.brand }} {{ product.name }}</h3>
-                        <p class="price">{{ product.price }} $</p>
-                    </a>
+                    <div class="product-card">
+                        <a href="/shop/product/{{ product.id }}/" class="product-link">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            <h3>{{ product.brand }} {{ product.name }}</h3>
+                            <p class="price">{{ product.price }} $</p>
+                        </a>
+                        <a href="/shop/order/product/{{ product.id }}/" class="add-to-cart-btn">Buy</a>
+                    </div>
                 {% endfor %}
             </div>
         </div>

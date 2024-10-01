@@ -1,1 +1,29 @@
-<h1>Orders page</h1>
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Orders{% endblock %}
+
+{% block add_css %}
+    <link rel="stylesheet" href="{% static 'user_profile/CSS/wishlist_orders.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="center-wrapper">
+        <div class="orders-container">
+            <h1>Orders</h1>
+            <div class="card-grid">
+                {% for order in orders %}
+                <div class="card">
+                    <img src="{{ order.image.url }}" alt="{{ order.product.name }}" class="card-image">
+                    <div class="card-content">
+                        <h3>{{ order.product.name }}</h3>
+                        <p>{{ order.product.description }}</p>
+                        <p><strong>Price:</strong> ${{ order.product.price }}</p>
+                        <p><strong>Is Complete:</strong> {{ order.is_complete }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -67,6 +67,22 @@ body {
 }
 
 /* Стили для панели авторизации */
+/* Стили для панели авторизации */
+.auth-panel a {
+    color: white;
+    background-color: #555;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-left: 10px; /* Для отступа между кнопками */
+}
+
+.auth-panel a:hover {
+    background-color: #a78001;
+}
+
+
 .auth-panel {
     flex: 1;
     text-align: right;

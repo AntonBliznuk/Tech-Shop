@@ -4,41 +4,36 @@
 }
 
 .list-section {
-    margin-bottom: 40px; /* Отступ между секциями */
+    margin-bottom: 40px;
 }
 
 h2 {
     font-size: 2em;
     margin-bottom: 20px;
-    text-align: center; /* Центрируем заголовки */
+    text-align: center;
 }
 
 .product-list {
-    flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 77px; /* Отступ между карточками */
+    gap: 40px;
 }
 
 .product-card {
-    display: block; /* Сделаем карточку блочным элементом для ссылки */
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px; /* Увеличиваем отступы внутри карточки */
-    text-align: center; /* Центрируем текст */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Добавляем тень и эффект увеличения */
-    width: 350px; /* Устанавливаем фиксированную ширину карточки */
-    height: 600px; /* Устанавливаем фиксированную высоту карточки */
-    margin: 15px; /* Увеличиваем расстояние между карточками */
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
 .product-card img {
-    width: 100%; /* Теперь ширина изображения будет 100% карточки */
-    height: 450px; /* Увеличиваем высоту для изображений */
-    object-fit: cover; /* Обеспечиваем обрезку изображений */
-    border-radius: 10px; /* Скругляем углы изображений */
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .product-card h3 {
@@ -48,10 +43,65 @@ h2 {
 
 .product-card .price {
     font-size: 1.2em;
-    color: #f9c84a; /* Цвет для цены */
+    color: #f9c84a;
+    margin-bottom: 15px;
 }
 
 .product-card:hover {
-    transform: scale(1.05); /* Увеличиваем карточку при наведении */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Увеличиваем тень при наведении */
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.add-to-cart-btn {
+    background-color: #f9c84a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #d1a33d;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card:hover .product-link {
+    color: inherit;
+}
+
+.search-bar {
+    width: 50%; /* Увеличена ширина */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin-left: 450px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #f9c84a; /* Темно-золотой цвет */
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: gold; /* Золотой цвет при наведении */
+    color: #000; /* Меняем цвет текста на черный при наведении */
+    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Увеличенное золотое свечение */
 }

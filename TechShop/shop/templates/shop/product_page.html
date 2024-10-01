@@ -1,4 +1,43 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-{% block title %}{{ product.brand }}{% endblock %}
+{% block title %}{{ product.brand }} {{ product.name }}{% endblock %}
+
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'shop/CSS/product_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="product-page">
+    <div class="image-gallery">
+        <!-- Фотогалерея продукта -->
+        <div class="main-image">
+            <img src="{{ main_image.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="thumbnails">
+            {% for image in images %}
+                <img src="{{ image.url }}" alt="Изображение {{ forloop.counter }}" class="thumbnail" onclick="changeMainImage('{{ image.url }}')">
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="product-details">
+        <h1>{{ product.brand }} {{ product.name }}</h1>
+        <p class="description">{{ product.description }}</p>
+        <p class="price">{{ product.price }} $</p>
+        <a href="/shop/order/product/{{ product.id }}/" class="buy-button">Купить</a>
+        {% if is_liked %}
+            <a href="?like=False" class="like-button">Delete from whish</a>
+        {% else %}
+            <a href="?like=True" class="like-button">Like</a>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    function changeMainImage(imageUrl) {
+        const mainImage = document.querySelector('.main-image img');
+        mainImage.src = imageUrl;
+    }
+</script>
+{% endblock %}

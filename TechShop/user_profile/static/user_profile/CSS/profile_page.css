@@ -1,0 +1,63 @@
+/* Контейнер для центрирования профиля */
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Основные стили для профиля */
+.profile-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.user-info p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.profile-actions {
+    margin-top: 30px;
+}
+
+.profile-button {
+    text-decoration: none;
+    color: white;
+    background-color: #555;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: inline-block;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #a78001;
+    transform: scale(1.05);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .profile-container {
+        width: 100%;
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .profile-button {
+        width: 100%;
+        text-align: center;
+    }
+}

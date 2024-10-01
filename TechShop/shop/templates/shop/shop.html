@@ -26,7 +26,7 @@
                 <select name="cat">
                     <option value="">Все категории</option>
                     {% for category in categories %}
-                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    <option value="{{ category.name }}">{{ category.name }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -47,11 +47,6 @@
                 </select>
             </div>
 
-            <div class="filter-section">
-                <h4>Год выпуска</h4>
-                <input type="number" name="year" placeholder="Год выпуска">
-            </div>
-
             <button type="submit">Применить фильтр</button>
         </form>
     </aside>
@@ -59,7 +54,7 @@
     <!-- Main Content -->
     <div class="car-container">
         {% for p in products %}
-        <a href="/shop/product/{{ p.id }}/" class="car-link">
+        <a href="/shop/product/{{ p.id }}/?like=" class="car-link">
             <div class="car-card">
                 <img src="{{ p.image.url }}" alt="{{ p.name }}" class="car-image">
                 <div class="car-details">
@@ -73,15 +68,16 @@
         {% endfor %}
 
     <!-- Пагинация -->
+    <!-- Пагинация -->
     <div class="pagination">
         {% if products.has_previous %}
-            <a href="/shop/page/{{ products.previous_page_number }}/" class="pagination-button">Предыдущая</a>
+            <a href="/shop/page/{{ products.previous_page_number }}/?{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}" class="pagination-button">Предыдущая</a>
         {% endif %}
 
         <span>Страница {{ products.number }} из {{ products.paginator.num_pages }}</span>
 
         {% if products.has_next %}
-            <a href="/shop/page/{{ products.next_page_number }}/" class="pagination-button">Следующая</a>
+            <a href="/shop/page/{{ products.next_page_number }}/?{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}" class="pagination-button">Следующая</a>
         {% endif %}
     </div>
     </div>
