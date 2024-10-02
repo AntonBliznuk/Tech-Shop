@@ -8,23 +8,23 @@
 {% endblock %}
 
 {% block content %}
-<!-- Форма поиска вверху -->
+<!-- Search form at the top -->
 <div class="search-bar-container">
     <form method="GET" action="">
-        <input type="text" name="search_query" placeholder="Поиск" class="search-bar">
-        <button type="submit" class="search-button">Поиск</button>
+        <input type="text" name="search_query" placeholder="Search" class="search-bar">
+        <button type="submit" class="search-button">Search</button>
     </form>
 </div>
 
 <div class="shop-container">
     <!-- Sidebar -->
     <aside class="sidebar">
-        <h3>Фильтры</h3>
-        <form method="GET" action="">
+        <h3>Filters</h3>
+        <form method="GET" action="/shop/page/1/">
             <div class="filter-section">
-                <h4>Категории</h4>
+                <h4>Categories</h4>
                 <select name="cat">
-                    <option value="">Все категории</option>
+                    <option value="">All Categories</option>
                     {% for category in categories %}
                     <option value="{{ category.name }}">{{ category.name }}</option>
                     {% endfor %}
@@ -32,22 +32,22 @@
             </div>
 
             <div class="filter-section">
-                <h4>Цены</h4>
-                <input type="number" name="price_min" placeholder="Минимальная цена">
-                <input type="number" name="price_max" placeholder="Максимальная цена">
+                <h4>Prices</h4>
+                <input type="number" name="price_min" placeholder="Min Price">
+                <input type="number" name="price_max" placeholder="Max Price">
             </div>
 
             <div class="filter-section">
-                <h4>Бренды</h4>
+                <h4>Brands</h4>
                 <select name="brand">
-                    <option value="">Все бренды</option>
+                    <option value="">All Brands</option>
                     {% for name in brand_names %}
                     <option value="{{ name }}">{{ name }}</option>
                     {% endfor %}
                 </select>
             </div>
 
-            <button type="submit">Применить фильтр</button>
+            <button type="submit">Apply Filter</button>
         </form>
     </aside>
 
@@ -64,22 +64,21 @@
             </div>
         </a>
         {% empty %}
-        <p></p>
+        <p>No products available</p>
         {% endfor %}
 
-    <!-- Пагинация -->
-    <!-- Пагинация -->
-    <div class="pagination">
-        {% if products.has_previous %}
-            <a href="/shop/page/{{ products.previous_page_number }}/?{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}" class="pagination-button">Предыдущая</a>
-        {% endif %}
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if products.has_previous %}
+                <a href="/shop/page/{{ products.previous_page_number }}/?{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}" class="pagination-button">Previous</a>
+            {% endif %}
 
-        <span>Страница {{ products.number }} из {{ products.paginator.num_pages }}</span>
+            <span>Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
 
-        {% if products.has_next %}
-            <a href="/shop/page/{{ products.next_page_number }}/?{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}" class="pagination-button">Следующая</a>
-        {% endif %}
-    </div>
+            {% if products.has_next %}
+                <a href="/shop/page/{{ products.next_page_number }}/?{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}" class="pagination-button">Next</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

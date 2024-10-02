@@ -11,30 +11,21 @@ def home_page(request):
     if request.user.is_authenticated:
 
         if request.method == 'GET':
-            # last_list = []
-            # last_product = []
-            last_viewed = models.ViewProduct.objects.filter(user=request.user).order_by('-viewed_at')
-            # for i in last_viewed:
-            #     if i.product not in last_product:
-            #         last_product.append(i.product)
-            #         last_list.append(i)
-            #         if len(last_list) >= 10:
-            #             break
-            # last_viewed = last_list
 
+            last_viewed = models.ViewProduct.objects.filter(user=request.user).order_by('-viewed_at')
             recomendations = None
 
             if last_viewed:
-                category_viewed_list = []
 
-                for cat in last_viewed:
-                    category_viewed_list.append(str(cat.product.category.name))
+                # category_viewed_list = []
 
-                print(category_viewed_list) 
+                # for cat in last_viewed:
+                #     category_viewed_list.append(str(cat.product.category.name))
+
+                # print(category_viewed_list) 
 
                 for view in last_viewed:
                     view.image = models.ImageProduct.objects.filter(product=view.product)[0].image
-
 
                 prod = models.Product.objects.all()
                 rec = no_data_rec(prod, 4)
@@ -77,6 +68,7 @@ def home_page(request):
         }
         return render(request, 'main/home_page.html', data)
     
+    
 
 def register_page(request):
     if not request.user.is_authenticated:
@@ -101,6 +93,7 @@ def register_page(request):
         return redirect('home_page')
 
 
+
 def login_page(request):
     if not request.user.is_authenticated:
         if request.method == 'GET':
@@ -121,14 +114,15 @@ def login_page(request):
 
             else:
                 return redirect('login_page')
-
     else:
         return redirect('home_page')
     
 
+
 def logout_page(request):
     logout(request)
     return redirect('home_page')
+
 
 
 def about_page(request):
@@ -136,6 +130,8 @@ def about_page(request):
         'workers': models.Worker.objects.all()
     }
     return render(request, 'main/about_page.html', data)
+
+
 
 def contact_page(request):
     return render(request, 'main/contact_page.html')

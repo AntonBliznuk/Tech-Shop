@@ -1,4 +1,4 @@
-/* Основной контейнер для страниц */
+/* Main container for pages */
 .center-wrapper {
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@
     min-height: 100vh;
 }
 
-/* Контейнеры для Wish List и Orders */
+/* Containers for Wish List and Orders */
 .wishlist-container, .orders-container {
     width: 100%;
     max-width: 1200px;
@@ -19,7 +19,7 @@ h1 {
     color: #333;
 }
 
-/* Сетка карточек */
+/* Card grid */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -27,7 +27,7 @@ h1 {
     margin-top: 20px;
 }
 
-/* Стиль карточек */
+/* Card styles */
 .card {
     background-color: white;
     border-radius: 10px;
@@ -87,7 +87,7 @@ h1 {
     background-color: #c9302c;
 }
 
-/* Адаптивность для мобильных устройств */
+/* Responsiveness for mobile devices */
 @media (max-width: 768px) {
     .card-grid {
         grid-template-columns: 1fr;

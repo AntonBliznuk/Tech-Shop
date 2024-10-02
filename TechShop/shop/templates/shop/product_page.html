@@ -10,13 +10,13 @@
 {% block content %}
 <div class="product-page">
     <div class="image-gallery">
-        <!-- Фотогалерея продукта -->
+        <!-- Product image gallery -->
         <div class="main-image">
             <img src="{{ main_image.url }}" alt="{{ product.name }}">
         </div>
         <div class="thumbnails">
             {% for image in images %}
-                <img src="{{ image.url }}" alt="Изображение {{ forloop.counter }}" class="thumbnail" onclick="changeMainImage('{{ image.url }}')">
+                <img src="{{ image.url }}" alt="Image {{ forloop.counter }}" class="thumbnail" onclick="changeMainImage('{{ image.url }}')">
             {% endfor %}
         </div>
     </div>
@@ -25,9 +25,9 @@
         <h1>{{ product.brand }} {{ product.name }}</h1>
         <p class="description">{{ product.description }}</p>
         <p class="price">{{ product.price }} $</p>
-        <a href="/shop/order/product/{{ product.id }}/" class="buy-button">Купить</a>
+        <a href="/shop/order/product/{{ product.id }}/" class="buy-button">Buy</a>
         {% if is_liked %}
-            <a href="?like=False" class="like-button">Delete from whish</a>
+            <a href="?like=False" class="like-button">Delete from wishlist</a>
         {% else %}
             <a href="?like=True" class="like-button">Like</a>
         {% endif %}

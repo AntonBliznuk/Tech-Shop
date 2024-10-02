@@ -1,4 +1,4 @@
-/* Стили для карточек товаров */
+/* Styles for product cards */
 .container {
     padding: 20px;
 }
@@ -78,7 +78,7 @@ h2 {
 }
 
 .search-bar {
-    width: 50%; /* Увеличена ширина */
+    width: 50%; /* Increased width */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -88,7 +88,7 @@ h2 {
 
 .search-button {
     padding: 10px 20px;
-    background-color: #f9c84a; /* Темно-золотой цвет */
+    background-color: #f9c84a; /* Dark gold color */
     color: #000000;
     border: none;
     border-radius: 5px;
@@ -101,7 +101,7 @@ h2 {
 }
 
 .search-button:hover {
-    background-color: gold; /* Золотой цвет при наведении */
-    color: #000; /* Меняем цвет текста на черный при наведении */
-    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Увеличенное золотое свечение */
+    background-color: gold; /* Gold color on hover */
+    color: #000; /* Change text color to black on hover */
+    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Increased gold glow */
 }

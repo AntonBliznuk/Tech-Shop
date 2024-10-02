@@ -1,4 +1,4 @@
-/* Основные стили для body */
+/* Basic styles for body */
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -6,7 +6,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Основные стили для header */
+/* Basic styles for header */
 .main-header {
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ body {
     height: 80px;
 }
 
-/* Стили для логотипа */
+/* Styles for logo */
 .main-header .logo {
     flex: 1;
 }
@@ -29,7 +29,7 @@ body {
     margin: 0;
 }
 
-/* Стили для навигации */
+/* Styles for navigation */
 .main-nav {
     flex: 2;
     display: flex;
@@ -66,8 +66,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Стили для панели авторизации */
-/* Стили для панели авторизации */
+/* Styles for authentication panel */
 .auth-panel a {
     color: white;
     background-color: #555;
@@ -75,33 +74,19 @@ body {
     border-radius: 5px;
     text-decoration: none;
     font-size: 1.2em;
-    margin-left: 10px; /* Для отступа между кнопками */
+    margin-left: 10px; /* For spacing between buttons */
 }
 
 .auth-panel a:hover {
     background-color: #a78001;
 }
-
 
 .auth-panel {
     flex: 1;
     text-align: right;
 }
 
-.auth-panel a {
-    color: white;
-    background-color: #555;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-.auth-panel a:hover {
-    background-color: #a78001;
-}
-
-/* Адаптивность */
+/* Responsiveness */
 @media (max-width: 768px) {
     .main-header {
         flex-direction: column;

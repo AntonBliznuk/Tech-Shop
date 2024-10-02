@@ -1,7 +1,7 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-{% block title %}Shop{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block add_css %}
 <link rel="stylesheet" href="{% static 'main/CSS/home_page.css' %}">
@@ -9,18 +9,18 @@
 
 {% block content %}
 <body>
-    <!-- Строка поиска -->
+    <!-- Search bar -->
     <div class="search-bar-container">
-        <form method="GET" action="">
-            <input type="text" name="search_query" placeholder="Поиск" class="search-bar">
-            <button type="submit" class="search-button">Поиск</button>
+        <form method="GET" action="/shop/page/1/">
+            <input type="text" name="search_query" placeholder="Search" class="search-bar">
+            <button type="submit" class="search-button">Search</button>
         </form>
     </div>
 
     <div class="container">
-        <!-- Недавно просмотренные товары -->
+        <!-- Recently viewed products -->
         <div class="list-section">
-            <h2>Недавно просмотренные</h2>
+            <h2>Recently Viewed</h2>
             <div class="product-list">
                 {% for view in last_viewed %}
                     <div class="product-card">
@@ -35,9 +35,9 @@
             </div>
         </div>
 
-        <!-- Рекомендуемые товары -->
+        <!-- Recommended products -->
         <div class="list-section">
-            <h2>Рекомендации</h2>
+            <h2>Recommendations</h2>
             <div class="product-list">
                 {% for product in recommendations %}
                     <div class="product-card">

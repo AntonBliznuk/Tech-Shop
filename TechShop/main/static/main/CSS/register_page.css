@@ -59,7 +59,7 @@ input::placeholder {
 button.btn {
     width: 100%;
     padding: 10px;
-    background-color: #f9c84a; /* Темно-золотой цвет */
+    background-color: #f9c84a; /* Dark gold color */
     color: #000000;
     font-size: 1.2em;
     border: none;
@@ -70,9 +70,9 @@ button.btn {
 }
 
 button.btn:hover {
-    background-color: gold; /* Золотой цвет при наведении */
-    color: #000; /* Меняем цвет текста на черный при наведении */
-    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Увеличенное золотое свечение */
+    background-color: gold; /* Gold color on hover */
+    color: #000; /* Change text color to black on hover */
+    box-shadow: 0 6px 40px rgb(255, 221, 0); /* Increased golden glow */
 }
 
 @media (max-width: 768px) {
@@ -89,9 +89,10 @@ button.btn:hover {
         padding: 10px 20px;
     }
 }
+
 label {
-    color: #000; /* Черный цвет для текста */
-    font-weight: bold; /* Сделать текст жирным, если нужно */
+    color: #000; /* Black color for text */
+    font-weight: bold; /* Make text bold, if needed */
     display: block;
-    margin-bottom: 5px; /* Отступ под лейблом */
+    margin-bottom: 5px; /* Spacing under the label */
 }

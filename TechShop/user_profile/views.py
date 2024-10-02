@@ -36,7 +36,7 @@ def whish_page(request):
 def orders_page(request):
     if request.user.is_authenticated and request.method == 'GET':
 
-        w = Order.objects.filter(user=request.user)
+        w = Order.objects.filter(user=request.user, is_complete=False)
 
         for i in w:
             prod = i.product
@@ -49,6 +49,7 @@ def orders_page(request):
         return render(request, 'user_profile/orders_page.html', data)
     else:
         return redirect('home_page')
+
 
 
 def remove_wish(request, product_id):

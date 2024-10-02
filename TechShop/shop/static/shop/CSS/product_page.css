@@ -7,6 +7,7 @@
     padding: 20px;
 }
 
+/* Image gallery for product */
 .image-gallery {
     display: flex;
     flex-direction: column;
@@ -24,6 +25,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Thumbnails for product gallery */
 .thumbnails {
     display: flex;
     margin-top: 10px;
@@ -39,9 +41,10 @@
 }
 
 .thumbnails img:hover {
-    transform: scale(1.1); /* Увеличение изображения при наведении */
+    transform: scale(1.1); /* Image enlargement on hover */
 }
 
+/* Product details section */
 .product-details {
     text-align: center;
     margin-top: 20px;
@@ -59,10 +62,11 @@
 
 .product-details .price {
     font-size: 1.5em;
-    color: #f9c84a; /* Цвет для цены */
+    color: #f9c84a; /* Color for price */
     margin-bottom: 20px;
 }
 
+/* Buy and like button styles */
 .buy-button, .like-button {
     background-color: #f9c84a;
     color: #000;
@@ -76,5 +80,5 @@
 }
 
 .buy-button:hover, .like-button:hover {
-    background-color: gold; /* Золотой цвет при наведении */
+    background-color: gold; /* Golden color on hover */
 }

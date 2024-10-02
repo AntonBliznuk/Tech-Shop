@@ -6,9 +6,10 @@ from user_profile.models import Order
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def shop_page(request, page_number):
+    
     if request.method == 'GET':
         products = models.Product.objects.all()
-        PRODUCTS_ON_PAGE = 3  # Количество товаров на одной странице
+        PRODUCTS_ON_PAGE = 3  
 
         if request.GET.get('search_query'):
             search_query = request.GET.get('search_query')
@@ -77,6 +78,7 @@ def shop_page(request, page_number):
         return redirect('shop_page')
     
 
+
 def product_page(request, product_id):
     if request.method == 'GET':
 
@@ -107,6 +109,8 @@ def product_page(request, product_id):
                     whish = models.WhisList.objects.filter(user=request.user, product=models.Product.objects.get(id=product_id))
                     if whish:
                         whish.delete()
+        else:
+            is_liked = False
 
         prod = models.Product.objects.get(id=product_id)
         img = list(models.ImageProduct.objects.filter(product=prod))
@@ -127,6 +131,8 @@ def product_page(request, product_id):
     else:
         return redirect('product_page')
     
+
+
 
 def order_page(request, product_id):
     if request.user.is_authenticated:

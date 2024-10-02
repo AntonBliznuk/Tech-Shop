@@ -1,4 +1,4 @@
-/* Контейнер для центрирования профиля */
+/* Container for centering the profile */
 .center-wrapper {
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@
     min-height: 100vh;
 }
 
-/* Основные стили для профиля */
+/* Main styles for the profile */
 .profile-container {
     background-color: white;
     border-radius: 10px;
@@ -48,7 +48,7 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Адаптивность для мобильных устройств */
+/* Responsiveness for mobile devices */
 @media (max-width: 768px) {
     .profile-container {
         width: 100%;
