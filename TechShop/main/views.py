@@ -81,6 +81,9 @@ def register_page(request):
                 username = form.cleaned_data['username']
                 email = form.cleaned_data['email']
                 password = form.cleaned_data['password1']
+                print(username)
+                print(email)
+                print(password)
 
                 new_user = User(username=username, email=email)
                 new_user.set_password(password)
@@ -111,6 +114,7 @@ def login_page(request):
                     return redirect('home_page')
                 else:
                     form.add_error(None, "Wrong name or password")
+                return redirect('home_page')
 
             else:
                 return redirect('login_page')

@@ -9,7 +9,7 @@ def shop_page(request, page_number):
     
     if request.method == 'GET':
         products = models.Product.objects.all()
-        PRODUCTS_ON_PAGE = 3  
+        PRODUCTS_ON_PAGE = 10  
 
         if request.GET.get('search_query'):
             search_query = request.GET.get('search_query')
