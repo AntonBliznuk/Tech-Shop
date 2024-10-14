@@ -6,3 +6,4 @@ pillow==10.4.0
 sqlparse==0.5.1
 unicorn==2.1.1
 uvicorn==0.31.1
+gunicorn==21.1.0
