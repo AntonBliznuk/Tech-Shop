@@ -1,4 +1,8 @@
 asgiref==3.8.1
+click==8.1.7
 Django==5.1.1
+h11==0.14.0
 pillow==10.4.0
 sqlparse==0.5.1
+unicorn==2.1.1
+uvicorn==0.31.1
